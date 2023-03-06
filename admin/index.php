@@ -1,12 +1,19 @@
 <?php 
 include("templates/header.php");
 include("bd.php");
-
+/** 
 $sentencia = $conexion ->prepare("SELECT `id_propiedad`,`galeria`, `titulo`, `precio`, `estado_id`, `id_tipo_operacion` FROM `tbl_propiedades`");
 $sentencia -> execute();
 $lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
+*/
 //print_r($lista_propiedades);
+$sentencia = $conexion ->prepare("SELECT tbl_propiedades.id_propiedad, tbl_propiedades.galeria, tbl_propiedades.titulo,tbl_propiedades.precio, tbl_estado.nombre, tbl_tipo_operacion.nombre_operacion FROM tbl_propiedades INNER JOIN tbl_estado ON tbl_propiedades.estado_id = tbl_estado.id INNER JOIN tbl_tipo_operacion ON tbl_propiedades.id_tipo_operacion = tbl_tipo_operacion.id");
+
+$sentencia -> execute();
+$lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 
 
 if(isset($_GET['txtID'])){
@@ -46,9 +53,9 @@ if(isset($_GET['txtID'])){
                         <td scope="row"> <?php echo $registros['id_propiedad'];?> </td>
                         <td> <?php echo $registros['galeria'];?> </td>
                         <td> <?php echo $registros['titulo'];?> </td>
-                        <td> <?php echo "$ ".$registros['precio'];?> </td>
-                        <td> <?php echo $registros['estado_id'];?> </td>
-                        <td> <?php echo $registros['id_tipo_operacion'];?> </td>
+                        <td> <?php echo "$".number_format($registros['precio'],2);?> </td>
+                        <td> <?php echo $registros['nombre'];?> </td>
+                        <td> <?php echo $registros['nombre_operacion'];?> </td>
                         <td>
                             <a name="" id="" class="btn btn-primary" href="editar.php?txtID=<?php echo $registros['id_propiedad'];?>" role="button">Editar</a>
                             |

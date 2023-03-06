@@ -173,7 +173,7 @@ if($_POST){
   
 </div>
 
-<button type="submit" class="btn btn-success">Publicar</button>
+<button type="submit" class="btn btn-success">Guardar Cambios</button>
 <a name="" id="" class="btn btn-primary" href="index.php" role="button">Cancelar</a>
       </form>
     </div>

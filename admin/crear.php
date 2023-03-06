@@ -3,6 +3,12 @@ $url_base ="http://localhost/integralhomemx/admin/";
 include("bd.php");
 include("templates/header.php");
 
+$sentencia = $conexion -> prepare("SELECT * FROM `tbl_tipo_inmueble`");
+$sentencia -> execute();
+$lista_tipo_inmueble = $sentencia ->fetchAll(PDO::FETCH_ASSOC);
+//print_r($lista_tipo_inmueble);
+
+
 if($_POST){
     
     $titulo = (isset($_POST['titulo']))?$_POST['titulo']:"";
@@ -16,13 +22,18 @@ if($_POST){
     $terreno =(isset($_POST['terreno']))?$_POST['terreno']:"";
     $direccion =(isset($_POST['direccion']))?$_POST['direccion']:"";
     $urlvideo =(isset($_POST['urlvideo']))?$_POST['urlvideo']:"";
+
     $galeria = (isset($_POST['galeria']))?$_POST['galeria']:"";
+    ///$fecha = new DataTime();
+   // $galeria = $fecha->getTimestamp()."_".$_FILES['archivo']['name'];
+    //move_uploaded_file($imagen_temporal,"imagenes/".$imagen);
+
     $anio_construccion = (isset($_POST['anio_construccion']))?$_POST['anio_construccion']:"";
 
     $sentencia = $conexion ->prepare("INSERT INTO `tbl_propiedades` (`id_propiedad`, `titulo`, `descripcion`, `id_tipo_inmueble`, `habitaciones`, `estacionamientos`, `sanitarios`, `precio`, `precio_mantenimiento`, `metros_construidos`, `metros_terreno`, `direccion`, `url_video`, `galeria`, `id_tipo_operacion`, `anio_construccion`, `estado_id`, `municipio_id`, `colonia_id`, `usuario_id`, `fecha_alta`) VALUES (NULL, :titulo, :descripcion, NULL, :habitaciones, :estacionamientos, :sanitarios, :precio, :mantenimiento, :construidos, :terreno, :direccion, :urlvideo, :galeria, NULL, :anio_construccion,NULL, NULL,NULL,NULL,NULL )");
-
     $sentencia->bindParam(":titulo",$titulo);
     $sentencia -> bindParam(":descripcion",$descripcion);
+   // $sentencia -> bindParam(":id_tipo_inmueble", $lista_tipo_inmueble);
     $sentencia -> bindParam(":habitaciones",$recamaras);
     $sentencia -> bindParam(":estacionamientos",$num_estacionamiento);
     $sentencia -> bindParam(":sanitarios",$sanitarios);
@@ -35,6 +46,10 @@ if($_POST){
     $sentencia -> bindParam(":galeria",$galeria);
     $sentencia -> bindParam(":anio_construccion",$anio_construccion);
     $sentencia->execute();
+
+    /*$tipo_inmueble = (isset($_POST['tipo_inmueble']))?$_POST['tipo_inmueble']:"";
+    $sql = $conexion ->prepare("INSERT INTO `tbl_tipo_operacion` (`id`, `nombre_operacion`) VALUES (NULL, :tipo_inmueble)");
+    $tipo_inmueble ->execute();*/
 
     header("Location:index.php");
 }
@@ -60,14 +75,19 @@ if($_POST){
         </div>
 
         <div class="mb-3">
+          
             <label for="tipo_inmueble" class="form-label">Tipo de inmueble</label>
+
+            
             <select class="form-select form-select-lg" name="tipo_inmueble" id="tipo_inmueble">
-                <option selected>Elije tipo</option>
-                <option value="">Departamento</option>
-                <option value="">Casa</option>
-                <option value="">Terreno</option>
-            </select>
+            <option selected>Elija uno</option>
+            <?php foreach($lista_tipo_inmueble as $registros){ ?>
+                <option value="<?php echo $registros['nombre'];?>"> <?php echo $registros['nombre'];?> </option>
+          <?php } ?>
+          </select>
         </div>
+
+       
 
    <div class="mb-3">
      <label for="habitaciones" class="form-label">Recámaras</label>
@@ -121,6 +141,26 @@ if($_POST){
 </div>
 
 <div class="mb-3">
+  <label for="" class="form-label">Estado</label>
+  <select class="form-select form-select-lg" name="" id="">
+    <option selected>Elija uno</option>
+    <option value="">Ciudad de Mexico</option>
+    <option value="">Estado de Mexico</option>
+    <option value="">Quintana Roo</option>
+  </select>
+</div>
+
+<div class="mb-3">
+  <label for="" class="form-label">Municipio / Delegacion</label>
+  <select class="form-select form-select-lg" name="" id="">
+    <option selected>Elija Uno</option>
+    <option value="">Benito Jaurez</option>
+    <option value="">Alvaro Obregon</option>
+    <option value="">Coyoacan</option>
+  </select>
+</div>
+
+<div class="mb-3">
   <label for="urlvideo" class="form-label">URL Video</label>
   <input type="text"
     class="form-control" name="urlvideo" id="urlvideo" aria-describedby="helpId" placeholder="https://youtube.com/video">
@@ -129,7 +169,7 @@ if($_POST){
 
 <div class="mb-3">
   <label for="galeria" class="form-label">Galeria</label>
-  <input type="txt"
+  <input type="file"
     class="form-control" name="galeria" id="galeria" aria-describedby="helpId" placeholder="Seleccione imagenes">
  
 </div>
