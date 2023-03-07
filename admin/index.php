@@ -7,7 +7,7 @@ $sentencia -> execute();
 $lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 */
 //print_r($lista_propiedades);
-$sentencia = $conexion ->prepare("SELECT tbl_propiedades.id_propiedad, tbl_propiedades.galeria, tbl_propiedades.titulo,tbl_propiedades.precio, tbl_estado.nombre, tbl_tipo_operacion.nombre_operacion FROM tbl_propiedades INNER JOIN tbl_estado ON tbl_propiedades.estado_id = tbl_estado.id INNER JOIN tbl_tipo_operacion ON tbl_propiedades.id_tipo_operacion = tbl_tipo_operacion.id");
+$sentencia = $conexion ->prepare("SELECT tbl_propiedades.id_propiedad, tbl_propiedades.galeria, tbl_propiedades.titulo,tbl_propiedades.precio, tbl_estado.nombre, tbl_tipo_operacion.nombre_operacion FROM tbl_propiedades INNER JOIN tbl_estado ON tbl_propiedades.estado_id = tbl_estado.id INNER JOIN tbl_tipo_operacion ON tbl_propiedades.id_tipo_operacion = tbl_tipo_operacion.id ORDER BY id_propiedad ASC");
 
 $sentencia -> execute();
 $lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);

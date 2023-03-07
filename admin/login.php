@@ -50,6 +50,7 @@ if ($_POST) {
         <div class="card-body">
 
           <form action="login.php" method="post">
+            
             Usuario:<input type="text" class="form-control" name="usuario" id=""><br />
             Contraseña:<input type="password" class="form-control" name="contrasenia" id=""><br />
             <button class="btn btn-success" type="submit">Entrar al administrador</button>
