@@ -13,9 +13,6 @@ $sentencia -> execute();
 $lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 
-
-
-
 if(isset($_GET['txtID'])){
     $txtID = (isset($_GET['txtID']))?$_GET['txtID']:"";
 
