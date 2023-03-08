@@ -209,7 +209,7 @@ if ($_POST) {
       </div>
 
       <div class="col-8 mt-3">
-        <label for="urlvideo" class="form-label">URL Video</label>
+        <label for="urlvideo" class="form-label">Link Video</label>
         <input type="text" class="form-control" name="urlvideo" id="urlvideo" aria-describedby="helpId" placeholder="https://youtube.com/video">
 
       </div>
