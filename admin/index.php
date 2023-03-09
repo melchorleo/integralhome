@@ -57,6 +57,8 @@ if(isset($_GET['txtID'])){
                             <a name="" id="" class="btn btn-primary" href="editar.php?txtID=<?php echo $registros['id_propiedad'];?>" role="button">Editar</a>
                             |
                             <a name="" id="" class="btn btn-danger" href="index.php?txtID=<?php echo $registros['id_propiedad'];?>" role="button">Eliminar</a>
+                            |
+                            <a name="" id="" class="btn btn-primary" href="../propiedades.php" role="button">Ver</a>
                         </td>
                         
                         

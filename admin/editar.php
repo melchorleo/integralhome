@@ -8,7 +8,7 @@ if (isset($_GET['txtID'])) {
   $sentencia->bindParam(":id_propiedad", $txtID);
   $sentencia->execute();
   $registro = $sentencia->fetch(PDO::FETCH_LAZY);
-  print_r($registro);
+  //print_r($registro);
   $id_propiedad = $registro['id_propiedad'];
   $titulo = $registro['titulo'];
   //$tipo_operacion = $registro['id_tipo_operacion']; // Moverlo
@@ -67,8 +67,31 @@ if ($_POST) {
   $urlvideo = (isset($_POST['urlvideo'])) ? $_POST['urlvideo'] : "";
   $galeria = (isset($_POST['galeria'])) ? $_POST['galeria'] : "";
   $anio_construccion = (isset($_POST['anio_construccion'])) ? $_POST['anio_construccion'] : "";
+  $caracteristica1 = (isset($_POST['caracteristica1']))?$_POST['caracteristica1']:""; 
+  $caracteristica2 = (isset($_POST['caracteristica2']))?$_POST['caracteristica2']:"";
+  $caracteristica3 = (isset($_POST['caracteristica3']))?$_POST['caracteristica3']:""; 
+  $caracteristica4 = (isset($_POST['caracteristica4']))?$_POST['caracteristica4']:"";
+  $caracteristica5 = (isset($_POST['caracteristica5']))?$_POST['caracteristica5']:""; 
+  $caracteristica6 = (isset($_POST['caracteristica6']))?$_POST['caracteristica6']:"";
+  $caracteristica7 = (isset($_POST['caracteristica7']))?$_POST['caracteristica7']:""; 
+  $caracteristica8 = (isset($_POST['caracteristica8']))?$_POST['caracteristica8']:"";
+  $caracteristica9 = (isset($_POST['caracteristica9']))?$_POST['caracteristica9']:""; 
+  $caracteristica10 = (isset($_POST['caracteristica10']))?$_POST['caracteristica10']:"";
+  $caracteristica11 = (isset($_POST['caracteristica11']))?$_POST['caracteristica11']:""; 
+  $caracteristica12 = (isset($_POST['caracteristica12']))?$_POST['caracteristica12']:"";
+  $caracteristica13 = (isset($_POST['caracteristica13']))?$_POST['caracteristica13']:""; 
+  $caracteristica14 = (isset($_POST['caracteristica14']))?$_POST['caracteristica14']:"";
+  $caracteristica15 = (isset($_POST['caracteristica15']))?$_POST['caracteristica15']:""; 
+  $caracteristica16 = (isset($_POST['caracteristica16']))?$_POST['caracteristica16']:"";
+  $caracteristica17 = (isset($_POST['caracteristica17']))?$_POST['caracteristica17']:""; 
+  $caracteristica18 = (isset($_POST['caracteristica18']))?$_POST['caracteristica18']:"";
+  $caracteristica19 = (isset($_POST['caracteristica19']))?$_POST['caracteristica19']:""; 
+  $caracteristica20 = (isset($_POST['caracteristica20']))?$_POST['caracteristica20']:"";
+  $caracteristica21 = (isset($_POST['caracteristica21']))?$_POST['caracteristica21']:"";
+  $caracteristica22 = (isset($_POST['caracteristica22']))?$_POST['caracteristica22']:""; 
+  $caracteristica23 = (isset($_POST['caracteristica23']))?$_POST['caracteristica23']:"";
 
-  $sentencia = $conexion->prepare("UPDATE `tbl_propiedades`  SET  titulo=:titulo,  descripcion=:descripcion, habitaciones=:habitaciones, estacionamientos=:estacionamientos, sanitarios=:sanitarios, precio=:precio, precio_mantenimiento=:mantenimiento, metros_construidos=:construidos, metros_terreno=:terreno, direccion=:direccion, url_video=:urlvideo, galeria=:galeria, anio_construccion=:anio_construccion WHERE id_propiedad=:id_propiedad");
+  $sentencia = $conexion->prepare("UPDATE `tbl_propiedades`  SET  titulo=:titulo,  descripcion=:descripcion, habitaciones=:habitaciones, estacionamientos=:estacionamientos, sanitarios=:sanitarios, precio=:precio, precio_mantenimiento=:mantenimiento, metros_construidos=:construidos, metros_terreno=:terreno, direccion=:direccion, url_video=:urlvideo, galeria=:galeria, anio_construccion=:anio_construccion, caracteristica1=:caracteristica1, caracteristica2=:caracteristica2, caracteristica3=:caracteristica3, caracteristica4=:caracteristica4, caracteristica5=:caracteristica5, caracteristica6=:caracteristica6, caracteristica7=:caracteristica7, caracteristica8=:caracteristica8, caracteristica9=:caracteristica9, caracteristica10=:caracteristica10, caracteristica11=:caracteristica11, caracteristica12=:caracteristica12, caracteristica13=:caracteristica13, caracteristica14=:caracteristica14, caracteristica15=:caracteristica15, caracteristica16=:caracteristica16, caracteristica17=:caracteristica17, caracteristica18=:caracteristica18, caracteristica19=:caracteristica19, caracteristica20=:caracteristica20, caracteristica21=:caracteristica21, caracteristica22=:caracteristica22, caracteristica23=:caracteristica23 WHERE id_propiedad=:id_propiedad");
 
   //$sentencia -> bindParam(":id_tipo_operacion",$id_tipo_operacion);
   $sentencia->bindParam(":titulo", $titulo);
@@ -84,6 +107,29 @@ if ($_POST) {
   $sentencia->bindParam(":urlvideo", $urlvideo);
   $sentencia->bindParam(":galeria", $galeria);
   $sentencia->bindParam(":anio_construccion", $anio_construccion);
+  $sentencia->bindParam(":caracteristica1",$caracteristica1);
+  $sentencia->bindParam(":caracteristica2",$caracteristica2);
+  $sentencia->bindParam(":caracteristica3",$caracteristica3);
+  $sentencia->bindParam(":caracteristica4",$caracteristica4);
+  $sentencia->bindParam(":caracteristica5",$caracteristica5);
+  $sentencia->bindParam(":caracteristica6",$caracteristica6);
+  $sentencia->bindParam(":caracteristica7",$caracteristica7);
+  $sentencia->bindParam(":caracteristica8",$caracteristica8);
+  $sentencia->bindParam(":caracteristica9",$caracteristica9);
+  $sentencia->bindParam(":caracteristica10",$caracteristica10);
+  $sentencia->bindParam(":caracteristica11",$caracteristica11);
+  $sentencia->bindParam(":caracteristica12",$caracteristica12);
+  $sentencia->bindParam(":caracteristica13",$caracteristica13);
+  $sentencia->bindParam(":caracteristica14",$caracteristica14);
+  $sentencia->bindParam(":caracteristica15",$caracteristica15);
+  $sentencia->bindParam(":caracteristica16",$caracteristica16);
+  $sentencia->bindParam(":caracteristica17",$caracteristica17);
+  $sentencia->bindParam(":caracteristica18",$caracteristica18);
+  $sentencia->bindParam(":caracteristica19",$caracteristica19);
+  $sentencia->bindParam(":caracteristica20",$caracteristica20);
+  $sentencia->bindParam(":caracteristica21",$caracteristica21);
+  $sentencia->bindParam(":caracteristica22",$caracteristica22);
+  $sentencia->bindParam(":caracteristica23",$caracteristica23);
   $sentencia->bindParam(":id_propiedad", $id_propiedad);
 
   $sentencia->execute();
@@ -379,8 +425,8 @@ if ($_POST) {
 
           
             <div class="form-check col-3">
-              <input class="form-check-input" type="checkbox" value="Gimnasio" id="caracteristica18" name="caracteristica10" <?php if (!empty($caracteristica18)) { ?> checked <?php } ?> >
-              <label class="form-check-label" for="caracteristica10">
+              <input class="form-check-input" type="checkbox" value="Gimnasio" id="caracteristica18" name="caracteristica18" <?php if(!empty($caracteristica18)) { ?> checked <?php } ?> >
+              <label class="form-check-label" for="caracteristica18">
                 Gimnasio
               </label>
             </div>
