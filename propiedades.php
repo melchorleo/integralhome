@@ -1,7 +1,7 @@
 <?php
 include("admin/bd.php");
 
-$sentencia = $conexion->prepare("SELECT id_propiedad, titulo, metros_construidos, precio, direccion, estacionamientos, sanitarios FROM tbl_propiedades ORDER BY id_propiedad DESC");
+$sentencia = $conexion->prepare("SELECT id_propiedad, galeria, titulo, metros_construidos, precio, direccion, estacionamientos, sanitarios FROM tbl_propiedades ORDER BY id_propiedad DESC");
 $sentencia->execute();
 $lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 //print_r($lista_propiedades);
@@ -69,7 +69,8 @@ $lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     <div class="container mt-5 border border-primary rounded">
       <div class="row">
         <div class="col-md-4">
-          <img src="img/2.jpg" alt="" class="img-fluid">
+          <img  width="280" src="admin/imagenes/<?php echo $registros['galeria'];?>" alt="100">
+          
         </div>
         <div class="col-md-8">
           <h4 class="card-title mt-2"> <?php echo $registros['titulo'] ?></h4>

@@ -24,9 +24,15 @@ if ($_POST) {
   $direccion = (isset($_POST['direccion'])) ? $_POST['direccion'] : "";
   $urlvideo = (isset($_POST['urlvideo'])) ? $_POST['urlvideo'] : "";
 
-  $galeria = (isset($_POST['galeria'])) ? $_POST['galeria'] : "";
+  //$galeria = (isset($_POST['galeria'])) ? $_POST['galeria'] : "";
+
+
 //agregue esto
-  $fecha = $fecha ->getTimestamp()."_".$_FILES['archivo']['name'];
+  $fecha = new DateTime();
+
+  $galeria = $fecha ->getTimestamp()."_".$_FILES['galeria']['name'];
+  $imagen_temporal = $_FILES['galeria']['tmp_name'];
+  move_uploaded_file($imagen_temporal,"imagenes/".$galeria);
 
 
 //aqui finaliza lo que se agrego
@@ -138,7 +144,7 @@ if ($_POST) {
 
       <div class="col-3 mt-3">
         <label for="habitaciones" class="form-label">Recámaras</label>
-        <input type="number" class="form-control" name="habitaciones" id="habitaciones" aria-describedby="helpId" placeholder="0">
+        <input type="number" step="0.01" class="form-control" name="habitaciones" id="habitaciones" aria-describedby="helpId" placeholder="0">
       </div>
 
       <div class="col-3 mt-3">
