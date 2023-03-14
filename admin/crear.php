@@ -25,6 +25,12 @@ if ($_POST) {
   $urlvideo = (isset($_POST['urlvideo'])) ? $_POST['urlvideo'] : "";
 
   $galeria = (isset($_POST['galeria'])) ? $_POST['galeria'] : "";
+//agregue esto
+  $fecha = $fecha ->getTimestamp()."_".$_FILES['archivo']['name'];
+
+
+//aqui finaliza lo que se agrego
+
   $tipo_operacion = (isset($_POST['id_tipo_operacion'])) ? $_POST['id_tipo_operacion'] : "";
   ///$fecha = new DataTime();
   // $galeria = $fecha->getTimestamp()."_".$_FILES['archivo']['name'];

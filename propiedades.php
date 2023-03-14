@@ -11,7 +11,7 @@ $lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <html lang="es">
 
 <head>
-  <title>Title</title>
+  <title>Propiedades - Integral Home</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,7 +69,7 @@ $lista_propiedades = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     <div class="container mt-5 border border-primary rounded">
       <div class="row">
         <div class="col-md-4">
-          <img src="img/1.jpg" alt="" class="img-fluid">
+          <img src="img/2.jpg" alt="" class="img-fluid">
         </div>
         <div class="col-md-8">
           <h4 class="card-title mt-2"> <?php echo $registros['titulo'] ?></h4>
